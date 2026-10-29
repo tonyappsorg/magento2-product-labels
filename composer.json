@@ -1,0 +1,9 @@
+{
+    "name": "tonyapps/module-product-labels",
+    "description": "Rule-driven product badges on catalog and product pages.",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "require": {"php": "~8.3.0||~8.4.0", "magento/framework": "*", "magento/module-catalog": "*", "magento/module-catalog-rule": "*"},
+    "version": "0.1.0",
+    "autoload": {"files": ["registration.php"], "psr-4": {"Tonyapps\\ProductLabels\\": ""}}
+}

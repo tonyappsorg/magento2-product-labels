@@ -1,0 +1,6 @@
+<?php $labels = $block->getLabels($block->getProduct()); ?>
+<?php if ($labels): ?><div class="tonyapps-product-labels">
+    <?php foreach ($labels as $label): ?>
+        <span class="tonyapps-product-label" style="background-color:<?= $block->escapeHtmlAttr($label['background_color']) ?>;color:<?= $block->escapeHtmlAttr($label['text_color']) ?>"><?= $block->escapeHtml($label['label']) ?></span>
+    <?php endforeach; ?>
+</div><?php endif; ?>

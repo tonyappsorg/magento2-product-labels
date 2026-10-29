@@ -1,0 +1,14 @@
+.tonyapps-product-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+}
+
+.tonyapps-product-label {
+    display: inline-block;
+    border-radius: 2px;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}

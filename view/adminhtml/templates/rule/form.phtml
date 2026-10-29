@@ -1,0 +1,5 @@
+<form method="post" action="<?= $block->escapeUrl($block->getUrl('*/*/save')) ?>" id="product_label_form" data-mage-init='{"validation":{}}'>
+    <?= $block->getBlockHtml('formkey') ?>
+    <?= $block->getForm()->toHtml() ?>
+    <div class="page-actions"><button type="submit" class="action-primary"><span><?= $block->escapeHtml(__('Save Label Rule')) ?></span></button></div>
+</form>

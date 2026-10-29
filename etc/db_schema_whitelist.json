@@ -1,0 +1,7 @@
+{
+    "tonyapps_product_label_rule": {
+        "column": {"background_color": true, "conditions_serialized": true, "created_at": true, "is_active": true, "label": true, "name": true, "rule_id": true, "sort_order": true, "store_ids": true, "text_color": true, "updated_at": true},
+        "index": {"TONYAPPS_PRODUCT_LABEL_ACTIVE_SORT": true},
+        "constraint": {"PRIMARY": true}
+    }
+}
