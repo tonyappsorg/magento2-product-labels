@@ -9,6 +9,9 @@ use Tonyapps\ProductLabels\Model\ResourceModel\Rule\CollectionFactory;
 
 class LabelProvider
 {
+    /** @var Rule[]|null Active rules, loaded once per request; RuleMatcher applies store scope. */
+    private ?array $rules = null;
+
     public function __construct(
         private readonly CollectionFactory $collectionFactory,
         private readonly RuleMatcher $ruleMatcher
@@ -47,7 +50,7 @@ class LabelProvider
     /** @return Rule[] */
     private function getRules(int $storeId): array
     {
-        return $this->collectionFactory->create()->addActiveFilter()->getItems();
+        return $this->rules ??= $this->collectionFactory->create()->addActiveFilter()->getItems();
     }
 
     /** @param string[] $codes */

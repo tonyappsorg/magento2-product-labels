@@ -20,6 +20,12 @@ Show rule-driven badges on product listings and product pages. Magento Open Sour
 1. **Rule engine and storefront:** catalog-rule conditions, scoped rule storage/admin editing, matching and ordered badges on listing and detail views, and focused unit tests.
 2. **Manual verification:** install/upgrade, create representative rules, inspect category/search and product pages, verify cache invalidation and multiple-label ordering.
 
+## 2026-10-30 review fixes
+
+- A rule condition on an attribute that was later deleted no longer causes a 500 on every storefront product collection. Attribute codes that no longer exist are dropped before `addAttributeToSelect()`.
+- Condition attributes are added only to product-listing collections (the `catalog_block_product_list_collection` event), not to every frontend product collection such as the cart or cross-sells.
+- Active rules are loaded once per request instead of once per product. The `category_ids` condition still runs one cached core lookup per product.
+
 ## Install
 
 ```sh
