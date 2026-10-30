@@ -9,18 +9,14 @@ use Tonyapps\ProductLabels\Model\ResourceModel\Rule\CollectionFactory;
 
 class LabelProvider
 {
-    /** @var array<int, Rule[]> */
-    private array $rulesByStore = [];
-
     public function __construct(
         private readonly CollectionFactory $collectionFactory,
-        private readonly ColorValidator $colorValidator,
         private readonly RuleMatcher $ruleMatcher
     )
     {
     }
 
-    /** @return array<int, array{label:string,background_color:string,text_color:string,sort_order:int}> */
+    /** @return array<int, array{label:string,background_color:string,text_color:string}> */
     public function getLabels(Product $product): array
     {
         $storeId = (int) $product->getData('store_id');
@@ -31,9 +27,8 @@ class LabelProvider
             }
             $labels[] = [
                 'label' => (string) $rule->getData('label'),
-                'background_color' => $this->colorValidator->normalize((string) $rule->getData('background_color')) ?? '#333333',
-                'text_color' => $this->colorValidator->normalize((string) $rule->getData('text_color')) ?? '#FFFFFF',
-                'sort_order' => (int) $rule->getData('sort_order'),
+                'background_color' => (string) $rule->getData('background_color'),
+                'text_color' => (string) $rule->getData('text_color'),
             ];
         }
         return $labels;
@@ -52,10 +47,7 @@ class LabelProvider
     /** @return Rule[] */
     private function getRules(int $storeId): array
     {
-        if (!isset($this->rulesByStore[$storeId])) {
-            $this->rulesByStore[$storeId] = $this->collectionFactory->create()->addActiveFilter()->getItems();
-        }
-        return $this->rulesByStore[$storeId];
+        return $this->collectionFactory->create()->addActiveFilter()->getItems();
     }
 
     /** @param string[] $codes */
